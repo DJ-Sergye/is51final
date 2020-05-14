@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastService } from '../toast/toast.service';
@@ -12,6 +13,15 @@ export class MainNavComponent implements OnInit {
   constructor(private router: Router, private toastService: ToastService) { }
 
   ngOnInit() {
+  }
+
+  logout() {
+    localStorage.removeItem('user');
+    this.router.navigate(['login']);
+  }
+
+  showAbout() {
+    this.toastService.showToast('success', 7000, 'This application was created by Sergio Carrillo (C).');
   }
 
 }
